@@ -44,6 +44,7 @@
 |-------|------|---------|
 | `GITHUB_TOKEN` | GitHub Models API 認証 | Actions では自動提供。ローカルは PAT を `.env` に記載 |
 | `NOTE_API_TOKEN` | note.com 非公開 API 認証 | DevTools の Network タブで Bearer トークンを手動取得 |
+| `UNSPLASH_ACCESS_KEY` | Unsplash 画像検索 API 認証（任意） | [Unsplash Developers](https://unsplash.com/developers) でアプリ登録 → Access Key を取得。未設定時は画像なしで動作継続 |
 
 ---
 

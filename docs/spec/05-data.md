@@ -46,7 +46,7 @@
 
 ---
 
-## 生成記事 Markdown — v1 (2026-06-14)
+## 生成記事 Markdown — v2 (2026-06-14)
 
 ```markdown
 ---
@@ -54,10 +54,17 @@ title: 記事タイトル（30文字以内推奨）
 date: YYYY-MM-DD
 category: beans | brewing | cafe | equipment | culture
 strategy: topics | matrix | news
+imageUrl: https://images.unsplash.com/photo-xxx  # 任意。UNSPLASH_ACCESS_KEY 未設定時は省略
+imageCredit: "Photo by John Doe on Unsplash"      # imageUrl が存在する場合のみ付与
 ---
+
+![コーヒー](https://images.unsplash.com/photo-xxx)
+*Photo by [John Doe](https://unsplash.com/@johndoe?utm_source=CoffeeBlog&utm_medium=referral) on [Unsplash](https://unsplash.com/?utm_source=CoffeeBlog&utm_medium=referral)*
 
 記事本文...
 ```
+
+**注意:** `imageUrl` が存在しない場合（API キー未設定 / 取得失敗）は、frontmatter の `imageUrl` / `imageCredit` フィールドおよび本文冒頭の画像ブロックは省略される。
 
 **category 値と日本語カテゴリの対応**
 
@@ -80,3 +87,4 @@ strategy: topics | matrix | news
 | 2026-06-14 | v1 | 初版作成 |
 | 2026-06-14 | v2 | `flavor` カテゴリ追加（テイスト・フレーバー・カッピング） |
 | 2026-06-14 | v3 | `industry` カテゴリ追加（企業・サプライチェーン・メーカー・小売り・認証）。`Category` 型に `flavor` と `industry` を反映。 |
+| 2026-06-14 | v4 | 生成記事 Markdown に `imageUrl` / `imageCredit` frontmatter フィールドと本文冒頭画像ブロックを追加（Unsplash 対応） |

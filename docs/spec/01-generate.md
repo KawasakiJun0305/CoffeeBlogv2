@@ -22,9 +22,10 @@
 1. 戦略を決定する（引数指定、または `auto` で重み付き抽選: topics 30% / matrix 40% / news 30%）
 2. `data/generated.json` を読み込み、重複を排除してトピック/組み合わせを選択する
 3. LLM（GitHub Models / GPT-4o、`baseURL: https://models.inference.ai.azure.com`）にプロンプトを送信して記事を生成する
-4. 生成された記事を `output/YYYY-MM-DD-[識別子].md` に保存する
-5. `data/generated.json` に生成履歴を追記する
-6. 生成完了をコンソールに出力する
+4. Unsplash API でカテゴリ + トピックに合った画像を1枚取得する（`UNSPLASH_ACCESS_KEY` が設定されている場合のみ。失敗時はスキップして続行）
+5. 生成された記事を `output/YYYY-MM-DD-[識別子].md` に保存する（画像がある場合は本文先頭に埋め込み + frontmatter に `imageUrl` / `imageCredit` を追加）
+6. `data/generated.json` に生成履歴を追記する
+7. 生成完了をコンソールに出力する
 
 ## 出力 / 事後状態
 
@@ -41,11 +42,48 @@
 | 全マトリクス組み合わせが生成済み | 同上 |
 | RSS フィード取得失敗（news 戦略） | 取得できたフィードのみで継続。全フィード失敗時はエラー終了 |
 
+## 画像取得仕様（Unsplash）
+
+`scripts/fetch-image.ts` に実装する。
+
+**検索クエリ（カテゴリ別）:**
+
+| カテゴリ | Unsplash 検索クエリ |
+|---------|-------------------|
+| `beans` | `coffee beans {topic}` |
+| `brewing` | `coffee brewing {topic}` |
+| `cafe` | `coffee shop cafe` |
+| `equipment` | `coffee equipment {topic}` |
+| `culture` | `coffee culture` |
+| `flavor` | `coffee tasting cup` |
+
+**Markdown 埋め込み形式:**
+
+```markdown
+---
+title: ...
+imageUrl: https://images.unsplash.com/photo-xxx
+imageCredit: "Photo by John Doe on Unsplash"
+---
+
+![コーヒー](https://images.unsplash.com/photo-xxx)
+*Photo by [John Doe](https://unsplash.com/@johndoe?utm_source=CoffeeBlog&utm_medium=referral) on [Unsplash](https://unsplash.com/?utm_source=CoffeeBlog&utm_medium=referral)*
+
+{記事本文}
+```
+
+**Unsplash クレジット表記（利用規約上の必須要件）:**
+- 写真家名へのリンク（`utm_source=CoffeeBlog&utm_medium=referral` 付き）
+- Unsplash へのリンク（同上）
+- 記事本文の先頭（画像直下）に配置
+
 ## スコープ外
 
 - リトライロジック（API エラー時は即終了）
 - 複数記事の同時生成（1回の実行で1記事）
 - 記事の自動公開
+- 画像の note.com へのアップロード（URL 埋め込みのみ）
+- 複数画像の選択・比較（1記事1枚）
 
 ---
 
@@ -89,3 +127,4 @@
 | 日付 | バージョン | 変更内容 |
 |------|-----------|---------|
 | 2026-06-14 | v1 | 初版作成 |
+| 2026-06-14 | v2 | Unsplash 画像取得ステップ（ステップ4）と画像仕様セクションを追加 |
