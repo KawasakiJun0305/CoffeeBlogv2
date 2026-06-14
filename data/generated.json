@@ -66,6 +66,58 @@
       "date": "2026-06-14",
       "file": "output/2026-06-14-matrix-コスタリカ-タラス-水出し-コールドブリュー.md",
       "noteUrl": null
+    },
+    {
+      "strategy": "topics",
+      "topic": "ネスレのコーヒー戦略：ネスプレッソ・ネスカフェ・ブルーボトルを抱える理由",
+      "category": "industry",
+      "date": "2026-06-14",
+      "file": "output/2026-06-14-ネスレのコーヒー戦略：ネスプレッソ・ネスカフェ・ブルーボトルを抱える理由.md",
+      "noteUrl": null
+    },
+    {
+      "strategy": "topics",
+      "topic": "SCA（スペシャルティコーヒー協会）の役割と世界的認定制度",
+      "category": "industry",
+      "date": "2026-06-14",
+      "file": "output/2026-06-14-SCA（スペシャルティコーヒー協会）の役割と世界的認定制度.md",
+      "noteUrl": null
+    },
+    {
+      "strategy": "matrix",
+      "bean": "パナマ ゲイシャ",
+      "method": "ハンドドリップ（V60）",
+      "angle": "ペアリング（フード・シーン）",
+      "date": "2026-06-14",
+      "file": "output/2026-06-14-matrix-パナマ-ゲイシャ-ハンドドリップ-V60.md",
+      "noteUrl": null
+    },
+    {
+      "strategy": "matrix",
+      "bean": "グアテマラ アンティグア",
+      "method": "エアロプレス",
+      "angle": "プロのコツを自宅で再現",
+      "date": "2026-06-14",
+      "file": "output/2026-06-14-matrix-グアテマラ-アンティグア-エアロプレス.md",
+      "noteUrl": null
+    },
+    {
+      "strategy": "industry-matrix",
+      "company": "コスタコーヒー（Costa Coffee）",
+      "angle": "海外展開と現地化戦略",
+      "topic": "コスタコーヒー（Costa Coffee）の海外展開と現地化戦略",
+      "date": "2026-06-14",
+      "file": "output/2026-06-14-industry-コスタコーヒー-Costa-Coffee-海外展開と現地化戦略.md",
+      "noteUrl": null
+    },
+    {
+      "strategy": "industry-matrix",
+      "company": "プロント",
+      "angle": "サプライチェーンと生産者との関係",
+      "topic": "プロントのサプライチェーンと生産者との関係",
+      "date": "2026-06-14",
+      "file": "output/2026-06-14-industry-プロント-サプライチェーンと生産者との関係.md",
+      "noteUrl": null
     }
   ]
 }
