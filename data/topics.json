@@ -149,6 +149,31 @@
     { "topic": "スティーブ・ジョブズとサードウェーブ — シリコンバレーのカフェ文化とイノベーション", "category": "culture" },
     { "topic": "岡希太郎 — 薬学からコーヒーを科学した日本のパイオニア研究者", "category": "culture" },
     { "topic": "広瀬一郎 — コーヒー鑑定士 Q グレーダー制度を日本に広めた人物", "category": "culture" },
-    { "topic": "山田康一 — 世界を旅した焙煎士と産地直輸入の先駆け", "category": "culture" }
+    { "topic": "山田康一 — 世界を旅した焙煎士と産地直輸入の先駆け", "category": "culture" },
+
+    { "topic": "SCAフレーバーホイールの読み方・使い方", "category": "flavor" },
+    { "topic": "コーヒーのアロマとフレーバーの違い：香りを正確に言語化する", "category": "flavor" },
+    { "topic": "フルーティー系コーヒーのフレーバーノート一覧と味わい方", "category": "flavor" },
+    { "topic": "フローラル（花の香り）系コーヒーが生まれる産地と条件", "category": "flavor" },
+    { "topic": "チョコレート・キャラメル系フレーバーの正体：糖とメイラード反応", "category": "flavor" },
+    { "topic": "スパイシー・アーシー系コーヒーの特徴と産地", "category": "flavor" },
+    { "topic": "コーヒーの酸味の正体：クエン酸・リンゴ酸・クロロゲン酸を解説", "category": "flavor" },
+    { "topic": "苦味はカフェインだけじゃない：コーヒーの苦み成分を科学する", "category": "flavor" },
+    { "topic": "コーヒーの甘みはどこから来るのか：糖・メイラード反応・焙煎の関係", "category": "flavor" },
+    { "topic": "アフターテイスト（後味）が長続きするコーヒーの秘密", "category": "flavor" },
+    { "topic": "マウスフィール（口当たり）とボディ感：なぜこのコーヒーは重いのか", "category": "flavor" },
+    { "topic": "バランスの取れたコーヒーとは何か：酸・苦・甘・コクの黄金比", "category": "flavor" },
+    { "topic": "ウォッシュドとナチュラルで味はどう変わるか（テイスト比較）", "category": "flavor" },
+    { "topic": "浅煎り・中煎り・深煎り別フレーバー変化ガイド", "category": "flavor" },
+    { "topic": "焙煎度とフレーバーの関係：ライトからフレンチまでの味の旅", "category": "flavor" },
+    { "topic": "精製方法が風味を決める理由：化学的視点で解説", "category": "flavor" },
+    { "topic": "抽出温度と酸味・苦味の関係：温度を変えると何が変わるか", "category": "flavor" },
+    { "topic": "カッピングの基本手順（SCAプロトコル完全解説）", "category": "flavor" },
+    { "topic": "コーヒースコアシートの読み方：各評価項目を徹底解説", "category": "flavor" },
+    { "topic": "家でできるカジュアルカッピングのやり方と必要道具", "category": "flavor" },
+    { "topic": "テイスティングノートの書き方：プロはどう風味を言語化するか", "category": "flavor" },
+    { "topic": "コーヒーコンテストの審査基準：ジャパンカッピングチャンピオンシップを例に", "category": "flavor" },
+    { "topic": "欠点豆（ディフェクト）が風味に与える悪影響と見分け方", "category": "flavor" },
+    { "topic": "オフフレーバーの種類と原因：発酵臭・燻製臭・土臭さを読み解く", "category": "flavor" }
   ]
 }
