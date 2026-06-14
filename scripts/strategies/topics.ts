@@ -32,34 +32,38 @@ function loadTopicsPrompt(): { system: string; userTemplate: string } {
   return { system, userTemplate };
 }
 
-export async function runTopicsStrategy(): Promise<void> {
-  // 1. topics.json 読み込み
+function loadUngenerated(): { ungenerated: TopicEntry[]; generatedPath: string; generatedData: GeneratedHistory } {
   const topicsData = JSON.parse(
     fs.readFileSync(path.join(ROOT, 'data', 'topics.json'), 'utf-8')
   ) as { topics: TopicEntry[] };
-
-  // 2. generated.json 読み込み（なければ空で初期化）
   const generatedPath = path.join(ROOT, 'data', 'generated.json');
   const generatedData: GeneratedHistory = fs.existsSync(generatedPath)
     ? JSON.parse(fs.readFileSync(generatedPath, 'utf-8'))
     : { generated: [] };
-
-  // 3. 生成済みトピックを除外
   const generatedTopics = new Set(
     generatedData.generated
       .filter((e): e is GeneratedTopicsEntry => e.strategy === 'topics')
       .map(e => e.topic)
   );
-
   const ungenerated = topicsData.topics.filter(t => !generatedTopics.has(t.topic));
+  return { ungenerated, generatedPath, generatedData };
+}
 
-  if (ungenerated.length === 0) {
+export function getTopicsCandidates(n: number): TopicEntry[] {
+  const { ungenerated } = loadUngenerated();
+  return ungenerated.sort(() => Math.random() - 0.5).slice(0, n);
+}
+
+export async function runTopicsStrategy(preSelected?: TopicEntry): Promise<void> {
+  const { ungenerated, generatedPath, generatedData } = loadUngenerated();
+
+  if (!preSelected && ungenerated.length === 0) {
     console.log('全トピック生成済み。新しいトピックを data/topics.json に追加してください。');
     return;
   }
 
-  // 4. ランダム選択
-  const selected = ungenerated[Math.floor(Math.random() * ungenerated.length)];
+  // ランダム選択（preSelected が提供された場合はスキップ）
+  const selected = preSelected ?? ungenerated[Math.floor(Math.random() * ungenerated.length)];
   console.log(`[topics] 選択: ${selected.topic} (${selected.category}) — 残り ${ungenerated.length} 件`);
 
   // 5. プロンプト組み立て

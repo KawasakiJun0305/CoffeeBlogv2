@@ -1,6 +1,6 @@
 # 仕様: 記事生成パイプライン
 
-> 関連ファイル: `scripts/generate.ts`, `scripts/strategies/*.ts`
+> 関連ファイル: `scripts/generate.ts`, `scripts/strategies/*.ts`, `scripts/select-and-generate.ts`
 
 ---
 
@@ -76,6 +76,46 @@ imageCredit: "Photo by John Doe on Unsplash"
 - 写真家名へのリンク（`utm_source=CoffeeBlog&utm_medium=referral` 付き）
 - Unsplash へのリンク（同上）
 - 記事本文の先頭（画像直下）に配置
+
+## インタラクティブ選択モード — `scripts/select-and-generate.ts`
+
+人間がトピックを選んでから記事生成する対話型フロー。
+
+### 処理フロー
+
+1. topics / matrix / industry-matrix の各戦略から未生成候補を数件ずつ収集する（合計 10 件）
+2. 番号付きリストで戦略名・トピック内容を表示する
+3. ユーザーが生成したい番号を入力する（例: `1,3,5` / `all` / `q` でキャンセル）
+4. 選択された記事のみを順番に生成する
+
+### 表示フォーマット（例）
+
+```
+未生成トピック候補
+────────────────────────────────────────────────────────────
+ 1. [topics           ] エチオピア イルガチェフェ (豆・産地)
+ 2. [matrix           ] ケニア AA × フレンチプレス × 初心者向け
+ 3. [industry-matrix  ] Timemoreのブランド戦略
+────────────────────────────────────────────────────────────
+生成する番号を入力（例: 1,3,5 / all / q）:
+```
+
+### 各戦略への追加エクスポート
+
+各戦略ファイルに以下を追加する:
+
+| 戦略ファイル | 追加する関数 | 引数の変更 |
+|------------|------------|---------|
+| `strategies/topics.ts` | `getTopicsCandidates(n: number): TopicEntry[]` | `runTopicsStrategy(preSelected?: TopicEntry)` |
+| `strategies/matrix.ts` | `getMatrixCandidates(n: number): MatrixCombo[]` | `runMatrixStrategy(preSelected?: MatrixCombo)` |
+| `strategies/industry-matrix.ts` | `getIndustryMatrixCandidates(n: number): IndustryMatrixCombo[]` | `runIndustryMatrixStrategy(preSelected?: IndustryMatrixCombo)` |
+
+### スコープ外
+
+- news 戦略の候補表示（RSS 取得が必要なため対象外）
+- Web UI での選択（CLI のみ）
+
+---
 
 ## スコープ外
 

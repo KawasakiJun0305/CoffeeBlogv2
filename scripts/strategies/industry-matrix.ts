@@ -26,26 +26,19 @@ function loadPrompt(): { system: string; userTemplate: string } {
   return { system, userTemplate };
 }
 
-export async function runIndustryMatrixStrategy(): Promise<void> {
-  // 1. マスタ読み込み
+function loadUngenerated(): { ungenerated: IndustryMatrixCombo[]; generatedPath: string; generatedData: GeneratedHistory } {
   const masterData = JSON.parse(
     fs.readFileSync(path.join(ROOT, 'data', 'topics-industry-matrix.json'), 'utf-8')
   ) as IndustryMatrix;
-
-  // 2. generated.json 読み込み
   const generatedPath = path.join(ROOT, 'data', 'generated.json');
   const generatedData: GeneratedHistory = fs.existsSync(generatedPath)
     ? JSON.parse(fs.readFileSync(generatedPath, 'utf-8'))
     : { generated: [] };
-
-  // 3. 生成済み組み合わせをSet化（company__angle をキーにする）
   const generatedCombos = new Set(
     generatedData.generated
       .filter((e): e is GeneratedIndustryMatrixEntry => e.strategy === 'industry-matrix')
       .map(e => `${e.company}__${e.angle}`)
   );
-
-  // 4. 全組み合わせを生成 → 未使用のみ抽出
   const allCombos: IndustryMatrixCombo[] = [];
   for (const companyEntry of masterData.companies) {
     for (const angle of masterData.angles) {
@@ -53,14 +46,23 @@ export async function runIndustryMatrixStrategy(): Promise<void> {
     }
   }
   const ungenerated = allCombos.filter(c => !generatedCombos.has(`${c.company}__${c.angle}`));
+  return { ungenerated, generatedPath, generatedData };
+}
 
-  if (ungenerated.length === 0) {
+export function getIndustryMatrixCandidates(n: number): IndustryMatrixCombo[] {
+  const { ungenerated } = loadUngenerated();
+  return ungenerated.sort(() => Math.random() - 0.5).slice(0, n);
+}
+
+export async function runIndustryMatrixStrategy(preSelected?: IndustryMatrixCombo): Promise<void> {
+  const { ungenerated, generatedPath, generatedData } = loadUngenerated();
+
+  if (!preSelected && ungenerated.length === 0) {
     console.log('[industry-matrix] 全組み合わせ生成済み。data/topics-industry-matrix.json に企業または切り口を追加してください。');
     return;
   }
 
-  // 5. ランダム選択
-  const selected = ungenerated[Math.floor(Math.random() * ungenerated.length)];
+  const selected = preSelected ?? ungenerated[Math.floor(Math.random() * ungenerated.length)];
   const topic = `${selected.company}の${selected.angle}`;
   console.log(`[industry-matrix] 選択: ${topic} — 残り ${ungenerated.length} 件`);
 

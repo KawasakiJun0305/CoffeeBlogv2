@@ -26,26 +26,19 @@ function loadPrompt(): { system: string; userTemplate: string } {
   return { system, userTemplate };
 }
 
-export async function runMatrixStrategy(): Promise<void> {
-  // 1. マスタ読み込み
+function loadUngenerated(): { ungenerated: MatrixCombo[]; generatedPath: string; generatedData: GeneratedHistory } {
   const masterData = JSON.parse(
     fs.readFileSync(path.join(ROOT, 'data', 'topics-matrix.json'), 'utf-8')
   ) as TopicsMatrix;
-
-  // 2. generated.json 読み込み
   const generatedPath = path.join(ROOT, 'data', 'generated.json');
   const generatedData: GeneratedHistory = fs.existsSync(generatedPath)
     ? JSON.parse(fs.readFileSync(generatedPath, 'utf-8'))
     : { generated: [] };
-
-  // 3. 生成済み組み合わせを除外（bean__method__angle をキーにする）
   const generatedCombos = new Set(
     generatedData.generated
       .filter((e): e is GeneratedMatrixEntry => e.strategy === 'matrix')
       .map(e => `${e.bean}__${e.method}__${e.angle}`)
   );
-
-  // 4. 全組み合わせを生成 → 未使用のみ抽出
   const allCombos: MatrixCombo[] = [];
   for (const bean of masterData.beans) {
     for (const method of masterData.methods) {
@@ -54,17 +47,24 @@ export async function runMatrixStrategy(): Promise<void> {
       }
     }
   }
-  const ungenerated = allCombos.filter(
-    c => !generatedCombos.has(`${c.bean}__${c.method}__${c.angle}`)
-  );
+  const ungenerated = allCombos.filter(c => !generatedCombos.has(`${c.bean}__${c.method}__${c.angle}`));
+  return { ungenerated, generatedPath, generatedData };
+}
 
-  if (ungenerated.length === 0) {
+export function getMatrixCandidates(n: number): MatrixCombo[] {
+  const { ungenerated } = loadUngenerated();
+  return ungenerated.sort(() => Math.random() - 0.5).slice(0, n);
+}
+
+export async function runMatrixStrategy(preSelected?: MatrixCombo): Promise<void> {
+  const { ungenerated, generatedPath, generatedData } = loadUngenerated();
+
+  if (!preSelected && ungenerated.length === 0) {
     console.log('[matrix] 全組み合わせ生成済み。data/topics-matrix.json に豆・抽出方法・切り口を追加してください。');
     return;
   }
 
-  // 5. ランダム選択
-  const selected = ungenerated[Math.floor(Math.random() * ungenerated.length)];
+  const selected = preSelected ?? ungenerated[Math.floor(Math.random() * ungenerated.length)];
   console.log(
     `[matrix] 選択: ${selected.bean} × ${selected.method} × ${selected.angle} — 残り ${ungenerated.length} 件`
   );
