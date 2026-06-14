@@ -31,12 +31,28 @@ async function main(): Promise<void> {
   }
 
   if (isDryRun) {
-    console.log('[pipeline] dry-run のため投稿をスキップします。');
+    console.log('[pipeline] dry-run のため後続ステップをスキップします。');
     console.log('[pipeline] パイプライン完了（dry-run）。');
     return;
   }
 
-  console.log('\n[pipeline] ステップ2: リーガルチェック');
+  console.log('\n[pipeline] ステップ2: ソース明示');
+  runScript('source-citation.ts');
+  // source-citation は常に続行（exit(1) を返さない）
+
+  console.log('\n[pipeline] ステップ3: ファクトチェック');
+  const factOk = runScript('fact-check.ts');
+
+  if (!factOk) {
+    console.error('[pipeline] ファクトチェック High リスク検出により投稿をスキップします。記事を確認してください。');
+    process.exit(1);
+  }
+
+  console.log('\n[pipeline] ステップ4: フォーマット・体裁チェック');
+  runScript('format-check.ts');
+  // format-check は常に続行（警告のみ）
+
+  console.log('\n[pipeline] ステップ5: リーガルチェック');
   const legalOk = runScript('legal-check.ts');
 
   if (!legalOk) {
@@ -44,7 +60,7 @@ async function main(): Promise<void> {
     process.exit(1);
   }
 
-  console.log('\n[pipeline] ステップ3: note.com 投稿');
+  console.log('\n[pipeline] ステップ6: note.com 投稿');
   const posted = runScript('post-to-note.ts');
 
   if (!posted) {

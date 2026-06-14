@@ -24,6 +24,9 @@
 | [docs/spec/04-automation.md](docs/spec/04-automation.md) | GitHub Actions 自動実行 | `.github/workflows/pipeline.yml` |
 | [docs/spec/05-data.md](docs/spec/05-data.md) | データスキーマ（JSON・Markdown） | `types/index.ts`, `data/*.json` |
 | [docs/spec/06-legal-check.md](docs/spec/06-legal-check.md) | リーガルチェック（リスク評価・投稿ブロック） | `scripts/legal-check.ts` |
+| [docs/spec/07-fact-check.md](docs/spec/07-fact-check.md) | ファクトチェック（事実検証・High でブロック） | `scripts/fact-check.ts` |
+| [docs/spec/08-format-check.md](docs/spec/08-format-check.md) | フォーマット・体裁チェック（警告のみ） | `scripts/format-check.ts` |
+| [docs/spec/09-source-citation.md](docs/spec/09-source-citation.md) | ソース明示（インライン引用・末尾セクション・frontmatter sources） | `scripts/source-citation.ts` |
 
 ---
 

@@ -93,6 +93,28 @@ export interface GeneratedHistory {
 export type LegalRiskLevel = 'low' | 'medium' | 'high';
 export type LegalFlag = 'health-claim' | 'company-negative' | 'overquote' | 'legal-assertion';
 
+// ---- Fact Check ----
+
+export type FactRiskLevel = 'low' | 'medium' | 'high';
+export type FactFlag =
+  | 'temp-out-of-range'
+  | 'unsupported-superlative'
+  | 'extreme-value'
+  | 'unverifiable-claim'
+  | 'contradictory-claim';
+
+// ---- Format Check ----
+
+export type FormatIssue =
+  | 'too-short'
+  | 'too-long'
+  | 'no-heading'
+  | 'h1-in-body'
+  | 'no-title'
+  | 'title-too-long'
+  | 'excessive-list'
+  | 'empty-section';
+
 // ---- Article Frontmatter ----
 
 export interface ArticleFrontmatter {
@@ -105,6 +127,13 @@ export interface ArticleFrontmatter {
   legalRisk?: LegalRiskLevel;
   legalFlags?: LegalFlag[];
   legalCheckedAt?: string; // ISO 8601
+  factRisk?: FactRiskLevel;
+  factFlags?: FactFlag[];
+  factCheckedAt?: string; // ISO 8601
+  formatIssues?: FormatIssue[];
+  formatCheckedAt?: string; // ISO 8601
+  sources?: string[];
+  sourceAddedAt?: string; // ISO 8601
 }
 
 // ---- Scoring ----
