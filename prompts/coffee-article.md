@@ -51,6 +51,7 @@ strategy: {{STRATEGY}}
 - **カフェ情報 (cafe)**: 店名・所在地・おすすめメニューを具体的に。「一人でも入りやすい雰囲気か」など読者目線の情報を加える。
 - **道具・機器 (equipment)**: 価格帯・入手先・メンテナンス頻度を書く。「これを買えば何が変わるか」を明確に。
 - **コーヒー文化 (culture)**: 歴史や背景を面白いエピソードで伝える。現代の生活との接点を示す。
+- **業界・企業・流通 (industry)**: 企業のビジネスモデル・サプライチェーンの構造・認証制度の仕組みを解説する。「お金の流れ」「誰が誰に何を売るか」を読者にわかりやすく示す。数字（市場規模・価格帯・認証取得コスト等）を必ず含める。
 
 ---
 
@@ -74,7 +75,7 @@ strategy: {{STRATEGY}}
 - **深掘り科学解説**: 抽出中に起きる化学反応・物理現象を、専門用語を解説しながら平易に書く。
 - **産地 × 抽出の相性**: なぜこの豆にこの抽出法が合うのかを風味プロファイルから説明する。
 
-frontmatter の `category` は記事内容から最適な値（beans / brewing / cafe / equipment / culture）を選んでください。
+frontmatter の `category` は記事内容から最適な値（beans / brewing / cafe / equipment / culture / flavor / industry）を選んでください。
 
 ---
 
@@ -95,4 +96,4 @@ frontmatter の `category` は記事内容から最適な値（beans / brewing /
 - 「こんな視点でコーヒーを楽しめる」という新鮮な発見を読者に提供する
 - タイトルに「意外性」を出す（例: 「〇〇とコーヒーの意外な関係」）
 
-frontmatter の `category` は記事内容から最適な値（beans / brewing / cafe / equipment / culture）を選んでください。
+frontmatter の `category` は記事内容から最適な値（beans / brewing / cafe / equipment / culture / flavor / industry）を選んでください。

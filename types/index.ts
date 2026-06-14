@@ -2,7 +2,7 @@
 
 export type Strategy = "topics" | "matrix" | "news";
 
-export type Category = "beans" | "brewing" | "cafe" | "equipment" | "culture";
+export type Category = "beans" | "brewing" | "cafe" | "equipment" | "culture" | "flavor" | "industry";
 
 // ---- Data Files ----
 
