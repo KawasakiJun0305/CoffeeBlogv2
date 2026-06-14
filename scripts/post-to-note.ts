@@ -40,11 +40,10 @@ function findLatestUnpostedFile(): string | null {
 
   const data: GeneratedHistory = JSON.parse(fs.readFileSync(generatedPath, 'utf-8'));
   const unposted = data.generated
-    .filter(e => e.noteUrl === null && e.file)
-    .sort((a, b) => b.date.localeCompare(a.date));
+    .filter(e => e.noteUrl === null && e.file);
 
   if (unposted.length === 0) return null;
-  return path.join(ROOT, unposted[0].file);
+  return path.join(ROOT, unposted[unposted.length - 1].file);
 }
 
 async function postToNote(title: string, body: string, token: string): Promise<NotePostResult> {

@@ -124,6 +124,32 @@
       "date": "2026-06-14",
       "file": "output/2026-06-14-news-news-article.md",
       "noteUrl": null
+    },
+    {
+      "strategy": "topics",
+      "topic": "自家焙煎コーヒー店の経営：独立開業の現実と収支モデル",
+      "category": "industry",
+      "date": "2026-06-14",
+      "file": "output/2026-06-14-自家焙煎コーヒー店の経営：独立開業の現実と収支モデル.md",
+      "noteUrl": null
+    },
+    {
+      "strategy": "matrix",
+      "bean": "エチオピア イルガチェフェ",
+      "method": "フレンチプレス",
+      "angle": "産地 × 抽出の相性",
+      "date": "2026-06-14",
+      "file": "output/2026-06-14-matrix-エチオピア-イルガチェフェ-フレンチプレス.md",
+      "noteUrl": null
+    },
+    {
+      "strategy": "industry-matrix",
+      "company": "Stumptown Coffee Roasters（スタンプタウン）",
+      "angle": "テクノロジー活用と製品革新",
+      "topic": "Stumptown Coffee Roasters（スタンプタウン）のテクノロジー活用と製品革新",
+      "date": "2026-06-14",
+      "file": "output/2026-06-14-industry-Stumptown-Coffee-Roasters-スタンプタウン-テクノロジー活用と製品革新.md",
+      "noteUrl": null
     }
   ]
 }

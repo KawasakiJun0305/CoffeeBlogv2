@@ -22,10 +22,10 @@ function findLatestUnpostedFile(): string | null {
 
   const data: GeneratedHistory = JSON.parse(fs.readFileSync(generatedPath, 'utf-8'));
   const unposted = data.generated
-    .filter(e => e.noteUrl === null && e.file)
-    .sort((a, b) => b.date.localeCompare(a.date));
+    .filter(e => e.noteUrl === null && e.file);
 
-  return unposted.length === 0 ? null : path.join(ROOT, unposted[0].file);
+  // generated.json はエントリ追記順に並ぶため、末尾 = 最新生成ファイル
+  return unposted.length === 0 ? null : path.join(ROOT, unposted[unposted.length - 1].file);
 }
 
 function parseFrontmatterValue(content: string, key: string): string | null {
