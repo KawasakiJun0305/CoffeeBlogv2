@@ -1,7 +1,8 @@
 import 'dotenv/config';
 import { runTopicsStrategy } from './strategies/topics';
+import { runIndustryMatrixStrategy } from './strategies/industry-matrix';
 
-const VALID_STRATEGIES = ['topics', 'matrix', 'news', 'auto'] as const;
+const VALID_STRATEGIES = ['topics', 'matrix', 'industry-matrix', 'news', 'auto'] as const;
 type StrategyInput = typeof VALID_STRATEGIES[number];
 
 function parseArgs(): { isDryRun: boolean; strategy: StrategyInput } {
@@ -17,11 +18,12 @@ function parseArgs(): { isDryRun: boolean; strategy: StrategyInput } {
   return { isDryRun, strategy };
 }
 
-function resolveAuto(strategy: StrategyInput): 'topics' | 'matrix' | 'news' {
+function resolveAuto(strategy: StrategyInput): 'topics' | 'matrix' | 'industry-matrix' | 'news' {
   if (strategy !== 'auto') return strategy;
   const rand = Math.random();
-  if (rand < 0.3) return 'topics';
-  if (rand < 0.7) return 'matrix';
+  if (rand < 0.35) return 'topics';
+  if (rand < 0.65) return 'industry-matrix';
+  if (rand < 0.82) return 'matrix';
   return 'news';
 }
 
@@ -47,11 +49,14 @@ async function main() {
     case 'topics':
       await runTopicsStrategy();
       break;
+    case 'industry-matrix':
+      await runIndustryMatrixStrategy();
+      break;
     case 'matrix':
-      console.log('[generate] Matrix 戦略は未実装です（p2-2 で実装予定）。');
+      console.log('[generate] Matrix 戦略（brewing）は未実装です。');
       break;
     case 'news':
-      console.log('[generate] News 戦略は未実装です（p2-3 で実装予定）。');
+      console.log('[generate] News 戦略は未実装です。');
       break;
   }
 }
