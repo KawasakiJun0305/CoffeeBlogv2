@@ -88,6 +88,11 @@ export interface GeneratedHistory {
   generated: GeneratedEntry[];
 }
 
+// ---- Legal Check ----
+
+export type LegalRiskLevel = 'low' | 'medium' | 'high';
+export type LegalFlag = 'health-claim' | 'company-negative' | 'overquote' | 'legal-assertion';
+
 // ---- Article Frontmatter ----
 
 export interface ArticleFrontmatter {
@@ -95,6 +100,11 @@ export interface ArticleFrontmatter {
   date: string; // YYYY-MM-DD
   category: Category;
   strategy: Strategy;
+  imageUrl?: string;
+  imageCredit?: string;
+  legalRisk?: LegalRiskLevel;
+  legalFlags?: LegalFlag[];
+  legalCheckedAt?: string; // ISO 8601
 }
 
 // ---- Scoring ----

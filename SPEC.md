@@ -23,6 +23,7 @@
 | [docs/spec/03-note-post.md](docs/spec/03-note-post.md) | note.com 下書き投稿 | `scripts/post-to-note.ts` |
 | [docs/spec/04-automation.md](docs/spec/04-automation.md) | GitHub Actions 自動実行 | `.github/workflows/pipeline.yml` |
 | [docs/spec/05-data.md](docs/spec/05-data.md) | データスキーマ（JSON・Markdown） | `types/index.ts`, `data/*.json` |
+| [docs/spec/06-legal-check.md](docs/spec/06-legal-check.md) | リーガルチェック（リスク評価・投稿ブロック） | `scripts/legal-check.ts` |
 
 ---
 

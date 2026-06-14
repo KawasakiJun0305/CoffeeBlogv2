@@ -142,3 +142,4 @@ imageCredit: "Photo by John Doe on Unsplash"
 | 2026-06-14 | v1 | 初版作成 |
 | 2026-06-14 | v2 | Unsplash 画像取得ステップ（ステップ4）と画像仕様セクションを追加 |
 | 2026-06-14 | v3 | Industry Matrix 戦略を追加（企業×切り口の動的トピック生成） |
+| 2026-06-14 | v4 | Matrix 戦略（brewing）実装（scripts/strategies/matrix.ts）。News 戦略実装（scripts/strategies/news.ts）。RSS 3フィード + OpenLibrary を入力ソースとして確定。 |

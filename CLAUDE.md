@@ -13,6 +13,7 @@
 | `scripts/post-to-note.ts` | [docs/spec/03-note-post.md](docs/spec/03-note-post.md) |
 | `.github/workflows/*.yml` | [docs/spec/04-automation.md](docs/spec/04-automation.md) |
 | `types/index.ts`, `data/*.json` | [docs/spec/05-data.md](docs/spec/05-data.md) |
+| `scripts/legal-check.ts` | [docs/spec/06-legal-check.md](docs/spec/06-legal-check.md) |
 | スコープ・技術スタック・環境変数の確認 | [SPEC.md](SPEC.md)（インデックス） |
 
 ### やってはいけないこと

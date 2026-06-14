@@ -9,6 +9,7 @@
     "generate:dry": "ts-node scripts/generate.ts --dry-run",
     "rank": "ts-node scripts/rank-articles.ts",
     "post": "ts-node scripts/post-to-note.ts",
+    "legal-check": "ts-node scripts/legal-check.ts",
     "pipeline": "ts-node scripts/pipeline.ts",
     "pipeline:dry": "ts-node scripts/pipeline.ts --dry-run"
   },

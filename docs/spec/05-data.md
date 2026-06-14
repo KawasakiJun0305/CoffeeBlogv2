@@ -148,6 +148,9 @@ category: beans | brewing | cafe | equipment | culture
 strategy: topics | matrix | news
 imageUrl: https://images.unsplash.com/photo-xxx  # 任意。UNSPLASH_ACCESS_KEY 未設定時は省略
 imageCredit: "Photo by John Doe on Unsplash"      # imageUrl が存在する場合のみ付与
+legalRisk: "low" | "medium" | "high"             # legal-check.ts が付与。未チェック時は省略
+legalFlags: ["health-claim", "overquote"]         # 検出フラグ一覧。フラグなしは []
+legalCheckedAt: "2026-06-14T10:00:00Z"            # チェック実行日時（ISO 8601）
 ---
 
 ![コーヒー](https://images.unsplash.com/photo-xxx)

@@ -1,6 +1,8 @@
 import 'dotenv/config';
 import { runTopicsStrategy } from './strategies/topics';
+import { runMatrixStrategy } from './strategies/matrix';
 import { runIndustryMatrixStrategy } from './strategies/industry-matrix';
+import { runNewsStrategy } from './strategies/news';
 
 const VALID_STRATEGIES = ['topics', 'matrix', 'industry-matrix', 'news', 'auto'] as const;
 type StrategyInput = typeof VALID_STRATEGIES[number];
@@ -53,10 +55,10 @@ async function main() {
       await runIndustryMatrixStrategy();
       break;
     case 'matrix':
-      console.log('[generate] Matrix 戦略（brewing）は未実装です。');
+      await runMatrixStrategy();
       break;
     case 'news':
-      console.log('[generate] News 戦略は未実装です。');
+      await runNewsStrategy();
       break;
   }
 }
