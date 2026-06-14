@@ -1,0 +1,24 @@
+{
+  "name": "coffee-blog-v2",
+  "version": "0.1.0",
+  "description": "AI駆動コーヒーブログ記事生成パイプライン（仕様駆動開発）",
+  "private": true,
+  "scripts": {
+    "pm": "ts-node scripts/pm-report.ts",
+    "generate": "ts-node scripts/generate.ts",
+    "generate:dry": "ts-node scripts/generate.ts --dry-run",
+    "rank": "ts-node scripts/rank-articles.ts",
+    "post": "ts-node scripts/post-to-note.ts",
+    "pipeline": "ts-node scripts/pipeline.ts",
+    "pipeline:dry": "ts-node scripts/pipeline.ts --dry-run"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.0",
+    "openai": "^4.80.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.7.0"
+  }
+}
