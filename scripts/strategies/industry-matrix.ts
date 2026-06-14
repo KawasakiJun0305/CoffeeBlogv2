@@ -12,6 +12,10 @@ import { fetchUnsplashImage, injectImageIntoMarkdown } from '../fetch-image';
 
 const ROOT = path.join(__dirname, '..', '..');
 
+function stripCodeFences(s: string): string {
+  return s.replace(/^```[^\n]*\n/, '').replace(/\n```$/, '').trim();
+}
+
 function loadPrompt(): { system: string; userTemplate: string } {
   const content = fs.readFileSync(path.join(ROOT, 'prompts', 'coffee-article.md'), 'utf-8');
   const sections = content.split('\n\n---\n\n');
@@ -95,7 +99,7 @@ export async function runIndustryMatrixStrategy(preSelected?: IndustryMatrixComb
     ],
   });
 
-  let markdown = response.choices[0].message.content ?? '';
+  let markdown = stripCodeFences(response.choices[0].message.content ?? '');
 
   // 8. Unsplash 画像取得（オプション）
   const imageResult = await fetchUnsplashImage(topic, 'industry');

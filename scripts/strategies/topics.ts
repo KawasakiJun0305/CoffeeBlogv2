@@ -7,6 +7,10 @@ import { fetchUnsplashImage, injectImageIntoMarkdown } from '../fetch-image';
 
 const ROOT = path.join(__dirname, '..', '..');
 
+function stripCodeFences(s: string): string {
+  return s.replace(/^```[^\n]*\n/, '').replace(/\n```$/, '').trim();
+}
+
 const CATEGORY_JA: Record<string, string> = {
   beans: '豆・産地',
   brewing: '抽出・レシピ',
@@ -95,7 +99,7 @@ export async function runTopicsStrategy(preSelected?: TopicEntry): Promise<void>
     ],
   });
 
-  let markdown = response.choices[0].message.content ?? '';
+  let markdown = stripCodeFences(response.choices[0].message.content ?? '');
 
   // 7. Unsplash 画像取得（オプション）
   const imageResult = await fetchUnsplashImage(selected.topic, selected.category);

@@ -7,6 +7,10 @@ import { fetchUnsplashImage, injectImageIntoMarkdown } from '../fetch-image';
 
 const ROOT = path.join(__dirname, '..', '..');
 
+function stripCodeFences(s: string): string {
+  return s.replace(/^```[^\n]*\n/, '').replace(/\n```$/, '').trim();
+}
+
 // 利用する RSS フィード（農業・環境・ワールドニュース）
 const RSS_FEEDS = [
   { url: 'https://www3.nhk.or.jp/nhkworld/en/news/rss.xml', label: 'NHK World' },
@@ -170,7 +174,7 @@ export async function runNewsStrategy(): Promise<void> {
     ],
   });
 
-  let markdown = response.choices[0].message.content ?? '';
+  let markdown = stripCodeFences(response.choices[0].message.content ?? '');
 
   // 5. Unsplash 画像取得（オプション）
   const imageResult = await fetchUnsplashImage(selected.title, 'culture');
