@@ -26,9 +26,15 @@ export interface MatrixCombo {
   angle: string;
 }
 
+/** topics-industry-matrix.json の企業エントリ */
+export interface CompanyEntry {
+  name: string;
+  subcategory: string;
+}
+
 /** data/topics-industry-matrix.json のスキーマ */
 export interface IndustryMatrix {
-  companies: string[];
+  companies: CompanyEntry[];
   angles: string[];
 }
 

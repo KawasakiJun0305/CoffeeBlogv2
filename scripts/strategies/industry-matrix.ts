@@ -47,9 +47,9 @@ export async function runIndustryMatrixStrategy(): Promise<void> {
 
   // 4. 全組み合わせを生成 → 未使用のみ抽出
   const allCombos: IndustryMatrixCombo[] = [];
-  for (const company of masterData.companies) {
+  for (const companyEntry of masterData.companies) {
     for (const angle of masterData.angles) {
-      allCombos.push({ company, angle });
+      allCombos.push({ company: companyEntry.name, angle });
     }
   }
   const ungenerated = allCombos.filter(c => !generatedCombos.has(`${c.company}__${c.angle}`));
