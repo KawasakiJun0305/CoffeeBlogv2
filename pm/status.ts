@@ -24,14 +24,14 @@ const status: ProjectStatus = {
     {
       id: "p1",
       name: "環境構築",
-      status: "todo",
+      status: "done",
       target_date: "2026-06-21",
       tasks: [
         { id: "p1-1", name: "package.json / tsconfig.json 作成", status: "done" },  // ✓ 2026-06-14
-        { id: "p1-2", name: "types/index.ts（ドメイン型定義）作成", status: "todo" },
-        { id: "p1-3", name: "prompts/coffee-article.md（プロンプトテンプレート）作成", status: "todo" },
-        { id: "p1-4", name: "data/topics.json・topics-matrix.json・generated.json 作成", status: "todo" },
-        { id: "p1-5", name: ".env.example 作成", status: "todo" },
+        { id: "p1-2", name: "types/index.ts（ドメイン型定義）作成", status: "done" },  // ✓ 2026-06-14
+        { id: "p1-3", name: "prompts/coffee-article.md（プロンプトテンプレート）作成", status: "done" },  // ✓ 2026-06-14
+        { id: "p1-4", name: "data/topics.json・topics-matrix.json・generated.json 作成", status: "done" },  // ✓ 2026-06-14
+        { id: "p1-5", name: ".env.example 作成", status: "done" },  // ✓ 2026-06-14
       ],
     },
     {

@@ -1,0 +1,27 @@
+{
+  "topics": [
+    { "topic": "エチオピア イルガチェフェ", "category": "beans" },
+    { "topic": "コロンビア スプレモ", "category": "beans" },
+    { "topic": "グアテマラ アンティグア", "category": "beans" },
+    { "topic": "ブラジル セラード", "category": "beans" },
+    { "topic": "ケニア AA", "category": "beans" },
+    { "topic": "インドネシア マンデリン", "category": "beans" },
+    { "topic": "パナマ ゲイシャ", "category": "beans" },
+    { "topic": "コスタリカ タラス", "category": "beans" },
+    { "topic": "ハンドドリップの基本", "category": "brewing" },
+    { "topic": "フレンチプレスの淹れ方", "category": "brewing" },
+    { "topic": "エアロプレスで本格コーヒー", "category": "brewing" },
+    { "topic": "水出しコーヒーの作り方", "category": "brewing" },
+    { "topic": "モカポットの使い方", "category": "brewing" },
+    { "topic": "サイフォンでコーヒーを淹れる", "category": "brewing" },
+    { "topic": "コーヒーと相性抜群の朝食", "category": "cafe" },
+    { "topic": "東京のスペシャルティコーヒー店めぐり", "category": "cafe" },
+    { "topic": "京都の老舗珈琲店", "category": "cafe" },
+    { "topic": "コーヒーミルの選び方", "category": "equipment" },
+    { "topic": "ドリッパー比較（V60・Kalita・Hario）", "category": "equipment" },
+    { "topic": "コーヒースケールの重要性", "category": "equipment" },
+    { "topic": "コーヒーと世界の歴史", "category": "culture" },
+    { "topic": "サードウェーブコーヒーとは", "category": "culture" },
+    { "topic": "コーヒーの精製方法（ウォッシュド・ナチュラル）", "category": "culture" }
+  ]
+}
