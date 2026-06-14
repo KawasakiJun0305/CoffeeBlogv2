@@ -1,5 +1,5 @@
 import 'dotenv/config';
-import { spawnSync } from 'child_process';
+import { execSync } from 'child_process';
 import * as path from 'path';
 
 const ROOT = path.join(__dirname, '..');
@@ -9,12 +9,13 @@ function parseArgs(): { isDryRun: boolean } {
 }
 
 function runScript(script: string, extraArgs: string[] = []): boolean {
-  const result = spawnSync(
-    'npx',
-    ['ts-node', `scripts/${script}`, ...extraArgs],
-    { stdio: 'inherit', cwd: ROOT, shell: true }
-  );
-  return result.status === 0;
+  try {
+    const command = ['npx', 'ts-node', `scripts/${script}`, ...extraArgs].join(' ');
+    execSync(command, { stdio: 'inherit', cwd: ROOT });
+    return true;
+  } catch {
+    return false;
+  }
 }
 
 async function main(): Promise<void> {
