@@ -1,4 +1,6 @@
 import 'dotenv/config';
+import * as fs from 'fs';
+import * as path from 'path';
 import { runTopicsStrategy } from './strategies/topics';
 import { runMatrixStrategy } from './strategies/matrix';
 import { runIndustryMatrixStrategy } from './strategies/industry-matrix';
@@ -47,6 +49,9 @@ async function main() {
     process.exit(1);
   }
 
+  const outputDir = path.join(__dirname, '..', 'output');
+  const beforeFiles = new Set(fs.existsSync(outputDir) ? fs.readdirSync(outputDir) : []);
+
   switch (resolved) {
     case 'topics':
       await runTopicsStrategy();
@@ -61,6 +66,9 @@ async function main() {
       await runNewsStrategy();
       break;
   }
+
+  const newFile = fs.readdirSync(outputDir).find(f => !beforeFiles.has(f));
+  console.log(`[generate] ✓ ${resolved} → ${newFile ?? '(ファイルなし)'}`);
 }
 
 main().catch(err => {

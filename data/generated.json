@@ -7,6 +7,65 @@
       "date": "2026-06-14",
       "file": "output/2026-06-14-Brevilleの革新：オーストラリア発エスプレッソマシンが世界標準になるまで.md",
       "noteUrl": null
+    },
+    {
+      "strategy": "industry-matrix",
+      "company": "Timemore（泰摩）",
+      "angle": "ビジネスモデルと収益構造",
+      "topic": "Timemore（泰摩）のビジネスモデルと収益構造",
+      "date": "2026-06-14",
+      "file": "output/2026-06-14-industry-Timemore-泰摩-ビジネスモデルと収益構造.md",
+      "noteUrl": null
+    },
+    {
+      "strategy": "topics",
+      "topic": "グラインダーのメンテナンスとクリーニング方法",
+      "category": "equipment",
+      "date": "2026-06-14",
+      "file": "output/2026-06-14-グラインダーのメンテナンスとクリーニング方法.md",
+      "noteUrl": null
+    },
+    {
+      "strategy": "topics",
+      "topic": "沖縄産コーヒーの可能性",
+      "category": "beans",
+      "date": "2026-06-14",
+      "file": "output/2026-06-14-沖縄産コーヒーの可能性.md",
+      "noteUrl": null
+    },
+    {
+      "strategy": "topics",
+      "topic": "ルワンダ ブルボン",
+      "category": "beans",
+      "date": "2026-06-14",
+      "file": "output/2026-06-14-ルワンダ-ブルボン.md",
+      "noteUrl": null
+    },
+    {
+      "strategy": "topics",
+      "topic": "ブラジル スルデミナス",
+      "category": "beans",
+      "date": "2026-06-14",
+      "file": "output/2026-06-14-ブラジル-スルデミナス.md",
+      "noteUrl": null
+    },
+    {
+      "strategy": "matrix",
+      "bean": "インドネシア マンデリン",
+      "method": "ハンドドリップ（V60）",
+      "angle": "初心者向け失敗しない方法",
+      "date": "2026-06-14",
+      "file": "output/2026-06-14-matrix-インドネシア-マンデリン-ハンドドリップ-V60.md",
+      "noteUrl": null
+    },
+    {
+      "strategy": "matrix",
+      "bean": "コスタリカ タラス",
+      "method": "水出し（コールドブリュー）",
+      "angle": "初心者向け失敗しない方法",
+      "date": "2026-06-14",
+      "file": "output/2026-06-14-matrix-コスタリカ-タラス-水出し-コールドブリュー.md",
+      "noteUrl": null
     }
   ]
 }
