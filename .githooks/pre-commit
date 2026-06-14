@@ -1,0 +1,19 @@
+#!/bin/sh
+# SPEC.md 遵守チェック
+# コード(.ts)が変更されているのに SPEC.md が変更されていない場合に警告する
+
+SPEC_CHANGED=$(git diff --cached --name-only | grep -c "^SPEC\.md$")
+CODE_CHANGED=$(git diff --cached --name-only | grep -cE "\.(ts|js)$")
+
+if [ "$CODE_CHANGED" -gt 0 ] && [ "$SPEC_CHANGED" -eq 0 ]; then
+  echo ""
+  echo "⚠️  [SPEC-CHECK] TypeScript ファイルが変更されていますが、SPEC.md は更新されていません。"
+  echo ""
+  echo "  変更する機能が SPEC.md に記載されているか確認してください:"
+  echo "  - 仕様に沿った実装であれば: git commit --no-verify でスキップできます"
+  echo "  - 仕様変更を伴う場合は: 先に SPEC.md を更新してからコミットしてください"
+  echo ""
+  exit 1
+fi
+
+exit 0
